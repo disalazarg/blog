@@ -1,0 +1,7 @@
+= link to: post_url(@conn, @post) do
+  h2.title = @post.title
+
+h5.subtitle = @post.date
+
+.lead == markdown @post.lead
+== markdown @post.content

@@ -1,0 +1,21 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    link rel="stylesheet" href="#{Routes.static_path(@conn, "/css/app.css")}"
+    link rel="preconnect" href="https://fonts.gstatic.com"
+    link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"
+
+    = render view_module(@conn), "meta.html", assigns
+
+  body
+    main.container role="main"
+      p.alert.alert-info role="alert"= get_flash(@conn, :info)
+      p.alert.alert-danger role="alert"= get_flash(@conn, :error)
+
+      .sidebar = render "sidebar.html", conn: @conn
+      .content = @inner_content
+
+    script type="text/javascript" src="#{Routes.static_path(@conn, "/js/app.js")}"

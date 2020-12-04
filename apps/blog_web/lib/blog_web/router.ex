@@ -13,10 +13,13 @@ defmodule BlogWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", BlogWeb do
+  scope "/blog", BlogWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/:category", PostController, :index, as: :post
+    get "/:category/:date/:id", PostController, :show, as: :post
   end
 
   # Other scopes may use custom stacks.

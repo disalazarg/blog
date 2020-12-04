@@ -1,0 +1,17 @@
+aside.menu
+  p.menu-label Blog
+  ul.menu-list
+    li = link "Tech", to: Routes.post_path(@conn, :index, "tech")
+    li = link "Philosophy", to: Routes.post_path(@conn, :index, "philosophy")
+
+  p.menu-label Projects
+  ul.menu-list
+    li
+      a(href="/servel/") Servel
+
+  p.menu-label Links
+  ul.menu-list
+    li
+      a(href="/files/cv.html") CV
+    li
+      a(href="https://www.linkedin.com/in/disalazarg/") LinkedIn

@@ -1,36 +1,49 @@
 /* This file is for your main application css. */
-@import "./phoenix.css";
+@import "./spectre.css";
 
-/* Alerts and form errors */
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+body {
+  font-family: "PT Serif", "Times", serif;
+  max-width: 72em;
 }
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+
+a {
+  color: #555;
+  text-decoration: none;
 }
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+
+a:hover, a:link, a:visited, a:active {
+  color: #555;
+  text-decoration: none;
 }
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
+
+.lead {
+  font-style: italic;
+  font-size: large;
 }
-.alert p {
-  margin-bottom: 0;
+
+.content {
+  padding: 1em;
 }
-.alert:empty {
-  display: none;
+
+.title {
+  color: #2f4f4f;
 }
-.invalid-feedback {
-  color: #a94442;
-  display: block;
-  margin: -1rem 0 2rem;
+
+.sidebar {
+  float: right;
+  margin: 0.5em;  
+}
+
+.menu {
+  padding: 0.7em;
+}
+
+.menu > ul {
+  list-style: none;
+}
+
+.menu-label {
+  color: #777;
+  font-size: small;
+  text-transform: uppercase;
 }

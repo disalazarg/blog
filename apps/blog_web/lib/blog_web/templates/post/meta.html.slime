@@ -1,0 +1,7 @@
+= if Map.has_key?(assigns, :post) do
+  title = assigns.post.title
+
+  meta property="og:title" content="#{assigns.post.title}">
+  meta property="og:description" content="#{assigns.post.lead}">
+
+meta property="og:image" content="https://dsalazar.cl/og_image.jpg">
