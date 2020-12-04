@@ -13,13 +13,20 @@ defmodule BlogWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/blog", BlogWeb do
-    pipe_through :browser
+  scope "/blog" do
+    scope "/api" do
+      pipe_through :api
 
-    get "/", PageController, :index
+      forward "/graphql", Absinthe.Plug.GraphiQL, schema: BlogWeb.Schema
+    end
 
-    get "/:category", PostController, :index, as: :post
-    get "/:category/:date/:id", PostController, :show, as: :post
+    scope "/", BlogWeb do
+      pipe_through :browser
+      get "/", PageController, :index
+
+      get "/:category", PostController, :index, as: :post
+      get "/:category/:date/:id", PostController, :show, as: :post
+    end
   end
 
   # Other scopes may use custom stacks.

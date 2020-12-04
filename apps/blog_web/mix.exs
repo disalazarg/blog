@@ -43,6 +43,7 @@ defmodule BlogWeb.MixProject do
       {:phoenix_slime, "~> 0.13"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
+      {:absinthe_phoenix, "~> 2.0.0"},
       {:earmark, "~> 1.4.0"},
       {:gettext, "~> 0.11"},
       {:blog, in_umbrella: true},
