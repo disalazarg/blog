@@ -1,17 +1,17 @@
-aside.menu
-  p.menu-label Blog
-  ul.menu-list
-    li = link "Tech", to: Routes.post_path(@conn, :index, "tech")
-    li = link "Philosophy", to: Routes.post_path(@conn, :index, "philosophy")
+ul.menu
+  li.divider(data-content="Blog")
 
-  p.menu-label Projects
-  ul.menu-list
-    li
-      a(href="/servel/") Servel
+  li.menu-item = link "Tech", to: Routes.post_path(@conn, :index, "tech")
+  li.menu-item = link "Philosophy", to: Routes.post_path(@conn, :index, "philosophy")
 
-  p.menu-label Links
-  ul.menu-list
-    li
-      a(href="/files/cv.html") CV
-    li
-      a(href="https://www.linkedin.com/in/disalazarg/") LinkedIn
+  li.divider(data-content="Projects")
+
+  li.menu-item
+    a(href="/servel/") Servel
+
+  li.divider(data-content="Links")
+
+  li.menu-item
+    a(href="/files/cv.html") CV
+  li.menu-item
+    a(href="https://www.linkedin.com/in/disalazarg/") LinkedIn

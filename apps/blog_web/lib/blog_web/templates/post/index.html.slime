@@ -1,2 +1,7 @@
 = for post <- @posts do
   = render "post.html", conn: @conn, post: post
+
+= if Enum.empty?(@posts) do
+  .empty
+    .empty-title No posts found under this category
+    .empty-subtitle Please use the sidebar to explore the rest of the website
