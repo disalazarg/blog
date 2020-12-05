@@ -12,7 +12,8 @@ import Config
 config :blog, Blog.Repo, nodes: ["127.0.0.1:9042"]
 
 config :blog_web, BlogWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  url: [host: "dsalazar.cl", port: 80],
+  server: true,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # ## SSL Support

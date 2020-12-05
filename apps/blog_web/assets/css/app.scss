@@ -8,6 +8,10 @@ body {
   max-width: 72em;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: $primary-color;
+}
+
 .lead {
   font-style: italic;
   font-size: large;
@@ -15,10 +19,6 @@ body {
 
 .content {
   padding: 1em;
-}
-
-.title {
-  color: $primary-color;
 }
 
 .sidebar {

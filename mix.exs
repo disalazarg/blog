@@ -6,6 +6,14 @@ defmodule Blog.Umbrella.MixProject do
       apps_path: "apps",
       version: "0.1.0",
       start_permanent: Mix.env() == :prod,
+      releases: [
+        blog: [
+          applications: [
+            blog: :permanent,
+            blog_web: :permanent
+          ]
+        ]
+      ],
       deps: deps(),
       aliases: aliases()
     ]

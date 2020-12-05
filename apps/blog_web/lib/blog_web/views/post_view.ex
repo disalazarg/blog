@@ -8,6 +8,6 @@ defmodule BlogWeb.PostView do
   end
 
   def markdown(code) do
-    Earmark.as_html!(code)
+    Earmark.as_html!(code, %Earmark.Options{code_class_prefix: "lang- language-"})
   end
 end

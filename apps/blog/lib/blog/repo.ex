@@ -12,7 +12,7 @@ defmodule Blog.Repo do
 
   def start_link(opts) do
     with {:ok, conn} <- Xandra.start_link(opts),
-         {:ok, list} <- Xandra.prepare(conn, "SELECT * FROM blog.posts WHERE category = ?"),
+         {:ok, list} <- Xandra.prepare(conn, "SELECT * FROM blog.posts WHERE category = ? ORDER BY date DESC"),
          {:ok, get} <- Xandra.prepare(conn, "SELECT * FROM blog.posts WHERE category = ? AND date = ? AND id = ?") do
       GenServer.start_link(__MODULE__, %{conn: conn, list: list, get: get}, name: __MODULE__)
     end
