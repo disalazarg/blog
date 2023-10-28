@@ -37,7 +37,7 @@ defmodule Blog.MixProject do
   defp deps do
     [
       {:phoenix_pubsub, "~> 2.0"},
-      {:xandra, "~> 0.13.1"}
+      {:xandra, "~> 0.17.0"}
     ]
   end
 

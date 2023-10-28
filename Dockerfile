@@ -1,4 +1,4 @@
-FROM elixir:1.10.4-alpine AS build
+FROM elixir:1.14.4-alpine AS build
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -23,12 +23,13 @@ COPY rel rel
 RUN mix release
 
 # Runtime
-FROM alpine:3.12
+FROM alpine:3.18
 
 RUN apk add --update \
         bash \
         openssl \
         curl \
+        lsof \
         libc6-compat \
         libpthread-stubs
 
