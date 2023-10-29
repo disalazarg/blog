@@ -54,7 +54,6 @@ defmodule Blog.Repo do
     {:reply, result, state}
   end
 
-  @spec parse_post(map) :: Post.t()
   defp parse_post(nil), do: nil
 
   defp parse_post(map) do
