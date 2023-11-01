@@ -14,7 +14,7 @@ defmodule Blog.Umbrella.MixProject do
           ]
         ]
       ],
-      dialyzer: [plt_add_apps: [:mix]],
+      dialyzer: [plt_add_apps: [:mix, :ex_unit]],
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
