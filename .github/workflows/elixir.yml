@@ -1,4 +1,4 @@
-name: test-format-verify
+name: Run Tests
 
 on:
   push:
