@@ -3,6 +3,8 @@ defmodule Blog.Repo do
   Context module for the ScyllaDB persistence layer
   """
 
+  @db_lib Application.compile_env(:blog, Blog.Repo, []) |> Keyword.get(:db_lib, Xandra)
+
   use GenServer
   alias Blog.Page.Post
 
@@ -11,9 +13,9 @@ defmodule Blog.Repo do
   end
 
   def start_link(opts) do
-    with {:ok, conn} <- Xandra.start_link(opts),
-         {:ok, list} <- Xandra.prepare(conn, "SELECT * FROM blog.posts WHERE category = ? ORDER BY date DESC"),
-         {:ok, get} <- Xandra.prepare(conn, "SELECT * FROM blog.posts WHERE category = ? AND date = ? AND id = ?") do
+    with {:ok, conn} <- @db_lib.start_link(opts),
+         {:ok, list} <- @db_lib.prepare(conn, "SELECT * FROM blog.posts WHERE category = ? ORDER BY date DESC"),
+         {:ok, get} <- @db_lib.prepare(conn, "SELECT * FROM blog.posts WHERE category = ? AND date = ? AND id = ?") do
       GenServer.start_link(__MODULE__, %{conn: conn, list: list, get: get}, name: __MODULE__)
     end
   end
@@ -23,7 +25,7 @@ defmodule Blog.Repo do
   def exec(query, args \\ []), do: GenServer.call(__MODULE__, {:exec, query, args})
 
   def handle_call({:list, category}, _from, state = %{conn: conn, list: list}) do
-    with {:ok, result} <- Xandra.execute(conn, list, [_category = category]) do
+    with {:ok, result} <- @db_lib.execute(conn, list, [_category = category]) do
       posts =
         result
         |> Enum.to_list()
@@ -35,7 +37,7 @@ defmodule Blog.Repo do
 
   def handle_call({:get, category, date, id}, _from, state = %{conn: conn, get: get}) do
     with {:ok, date} <- Date.from_iso8601(date),
-         {:ok, result} <- Xandra.execute(conn, get, [category, date, id]) do
+         {:ok, result} <- @db_lib.execute(conn, get, [category, date, id]) do
       post =
         result
         |> Enum.to_list()
@@ -49,7 +51,7 @@ defmodule Blog.Repo do
   end
 
   def handle_call({:exec, query, args}, _from, state = %{conn: conn}) do
-    result = Xandra.execute(conn, query, args)
+    result = @db_lib.execute(conn, query, args)
 
     {:reply, result, state}
   end
