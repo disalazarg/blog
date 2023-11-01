@@ -11,8 +11,9 @@ defmodule BlogWeb.MixProject do
       lockfile: "../../mix.lock",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      test_coverage: [tool: ExCoveralls],
       aliases: aliases(),
       deps: deps()
     ]

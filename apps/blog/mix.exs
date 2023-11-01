@@ -12,6 +12,7 @@ defmodule Blog.MixProject do
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
+      test_coverage: [tool: ExCoveralls],
       aliases: aliases(),
       deps: deps()
     ]
@@ -37,7 +38,7 @@ defmodule Blog.MixProject do
   defp deps do
     [
       {:phoenix_pubsub, "~> 2.0"},
-      {:xandra, "~> 0.13.1"}
+      {:xandra, "~> 0.17.0"}
     ]
   end
 
