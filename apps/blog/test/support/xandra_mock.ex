@@ -13,6 +13,7 @@ defmodule XandraMock do
   }
 
   def init(args), do: {:ok, args}
+
   def start_link(_opts) do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
   end
