@@ -17,15 +17,18 @@ defmodule Blog.Umbrella.MixProject do
       dialyzer: [plt_add_apps: [:mix, :ex_unit]],
       deps: deps(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.post": :test,
-        "coveralls.html": :test,
-        "coveralls.cobertura": :test
-      ],
       aliases: aliases()
     ]
+  end
+
+  def cli do
+    [preferred_envs: [
+      coveralls: :test,
+      "coveralls.detail": :test,
+      "coveralls.post": :test,
+      "coveralls.html": :test,
+      "coveralls.cobertura": :Test
+    ]]
   end
 
   # Dependencies can be Hex packages:
