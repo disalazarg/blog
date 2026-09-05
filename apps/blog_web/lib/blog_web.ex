@@ -20,9 +20,9 @@ defmodule BlogWeb do
   def controller do
     quote do
       use Phoenix.Controller, namespace: BlogWeb
+      use Gettext, backend: BlogWeb.Gettext
 
       import Plug.Conn
-      import BlogWeb.Gettext
       alias BlogWeb.Router.Helpers, as: Routes
     end
   end

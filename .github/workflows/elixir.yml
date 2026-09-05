@@ -17,20 +17,20 @@ jobs:
       otp-version: '25.3.1' # Define the OTP version [required]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
         elixir-version: ${{ env.elixir-version }}
         otp-version: ${{ env.otp-version }}
     - name: Restore dependencies cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
     - name: Restore cached PLTs
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: _build/dev
         key: ${{ runner.os }}-mix-${{ env.otp-version }}-${{ env.elixir-version }}
@@ -48,7 +48,7 @@ jobs:
     - name: Check coverage
       run: mix coveralls.html -u -o cover
     - name: Archive code coverage results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: code-coverage-report
         path: cover/excoveralls.html
