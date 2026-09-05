@@ -22,13 +22,15 @@ defmodule Blog.Umbrella.MixProject do
   end
 
   def cli do
-    [preferred_envs: [
-      coveralls: :test,
-      "coveralls.detail": :test,
-      "coveralls.post": :test,
-      "coveralls.html": :test,
-      "coveralls.cobertura": :Test
-    ]]
+    [
+      preferred_envs: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test,
+        "coveralls.cobertura": :Test
+      ]
+    ]
   end
 
   # Dependencies can be Hex packages:
