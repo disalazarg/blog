@@ -3,7 +3,7 @@ defmodule Blog.Repo do
   Context module for the ScyllaDB persistence layer
   """
 
-  @db_lib Application.compile_env(:blog, Blog.Repo, []) |> Keyword.get(:db_lib, Xandra)
+  @db_lib Application.compile_env(:blog, [Blog.Repo, :db_lib], Xandra)
 
   use GenServer
   alias Blog.Page.Post
