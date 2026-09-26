@@ -26,11 +26,9 @@ RUN mix release
 FROM alpine:3.24
 
 RUN apk add --update \
-        bash \
-        openssl \
-        curl \
-        lsof \
-        libc6-compat
+    bash openssl curl lsof \
+    libgcc libstdc++ ncurses-libs \
+    libc6-compat
 
 RUN mkdir -p /app
 WORKDIR /app
